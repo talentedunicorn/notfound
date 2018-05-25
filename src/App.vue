@@ -30,6 +30,10 @@ export default {
   display: grid;
 }
 
+#app > * {
+  padding: var(--spacing);
+}
+
 .hidden {
   position: absolute;
   overflow: hidden;

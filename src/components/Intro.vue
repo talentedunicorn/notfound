@@ -2,7 +2,7 @@
   <section>
     <h1><span>{{ title }}</span>&#32;<span>{{ subtitle }}</span></h1>
 
-    <a class="button" href="/generator">{{ buttonLabel }}</a>
+    <router-link class="button" to="/generator">{{ buttonLabel }}</router-link>
   </section>
 </template>
 
