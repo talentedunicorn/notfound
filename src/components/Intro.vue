@@ -1,5 +1,9 @@
 <template>
-  <h1 v-text="welcome"/>
+  <section>
+    <h1><span>{{ title }}</span>&#32;<span>{{ subtitle }}</span></h1>
+
+    <a class="button" href="/generator">{{ buttonLabel }}</a>
+  </section>
 </template>
 
 <script>
@@ -7,14 +11,38 @@ export default {
   name: 'Intro',
   data () {
     return {
-      welcome: 'This is notfound, your friendly 404 generator'
+      title: 'notfound',
+      subtitle: 'Your friendly 404 generator',
+      buttonLabel: 'Get started'
     }
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1 {
+  section {
+    align-self: center;
+    text-align: center;
+  }
+
+  h1 span {
+    display: block;
+  }
+
+  h1 span:first-of-type {
+    color: var(--gray);
+  }
+
+  h1 span:last-of-type {
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    font-size: 0.8rem;
+    margin-top: var(--spacing);
+  }
+
+  .button {
+    margin-top: var(--spacing);
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
   }
 </style>
