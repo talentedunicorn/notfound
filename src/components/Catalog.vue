@@ -1,13 +1,18 @@
 <template>
   <section>
-    <h1>Under construction, come back soon ;)</h1>
     <router-link class="button" to="/">Go back</router-link>
+    <h1>Under construction, come back soon ;)</h1>
   </section>
 </template>
 
 <script>
 export default {
-  name: 'Generator'
+  name: 'Catalog',
+  data () {
+    return {
+      templates: []
+    }
+  }
 }
 </script>
 

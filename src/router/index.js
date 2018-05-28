@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Intro from '@/components/Intro'
-import Generator from '@/components/Generator'
+import Catalog from '@/components/Catalog'
 
 Vue.use(Router)
 
@@ -13,9 +13,9 @@ export default new Router({
       component: Intro
     },
     {
-      path: '/generator',
-      name: 'Generator',
-      component: Generator
+      path: '/catalog',
+      name: 'Catalog',
+      component: Catalog
     }
   ]
 })
