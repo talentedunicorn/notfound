@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "stable"
+script:
+  - yarn test
+  - yarn build
+branches:
+  - master
+  - dev
