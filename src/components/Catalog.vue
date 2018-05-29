@@ -4,7 +4,7 @@
     <h1>Select template</h1>
 
     <ul v-if="templates.length > 0">
-      <li v-for="(template, index) in templates" :key="index">{{ template.title }}</li>
+      <li v-for="(template, index) in templates" :key="index"><router-link to="/template">{{ template.title }}</router-link></li>
     </ul>
 
     <p class="placeholder" v-else>No templates found</p>
@@ -14,10 +14,20 @@
 <script>
 const templates = [
   {
-    title: 'Search'
+    title: 'Search',
+    slug: 'search'
   },
   {
-    title: 'Gif'
+    title: 'Gif',
+    slug: 'gif'
+  },
+  {
+    title: 'Puzzle',
+    slug: 'puzzle'
+  },
+  {
+    title: 'Suggestions',
+    slug: 'suggestions'
   }
 ]
 
@@ -61,6 +71,11 @@ export default {
     align-items: center;
     justify-content: center;
     font-size: var(--size-4);
+  }
+
+  li > a {
+    color: currentColor;
+    text-decoration: none;
   }
 
   h1 {
