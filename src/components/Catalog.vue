@@ -25,6 +25,7 @@ export default {
     // Get templates
     axios.get('/api/templates')
       .then((response) => { this.templates = response.data })
+      .catch((error) => console.log(error))
   }
 }
 </script>

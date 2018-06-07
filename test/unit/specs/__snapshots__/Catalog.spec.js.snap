@@ -4,19 +4,6 @@ exports[`Catalog.vue should match snapshot 1`] = `
 <section>
   <!---->
   <h1>Select template</h1>
-  <ul>
-    <li>
-      <!---->
-    </li>
-    <li>
-      <!---->
-    </li>
-    <li>
-      <!---->
-    </li>
-    <li>
-      <!---->
-    </li>
-  </ul>
+  <p class="placeholder">No templates found</p>
 </section>
 `;
