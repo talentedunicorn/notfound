@@ -12,14 +12,11 @@ An easy to use platform for creating custom 404 pages
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+# serve with hot reload at localhost:3000
 npm run dev
 
-# build for production with minification
+# build for production
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
 
 # run unit tests
 npm run unit
