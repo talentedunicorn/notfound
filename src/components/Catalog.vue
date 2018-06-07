@@ -24,7 +24,9 @@ export default {
   mounted() {
     // Get templates
     axios.get('/api/templates')
-      .then((response) => { this.templates = response.data })
+      .then((response) => {
+        this.templates = response.data
+      })
       .catch((error) => console.log(error))
   }
 }
