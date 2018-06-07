@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Intro.vue should match snapshot 1`] = `
+<section>
+  <h1><span>notfound</span> <span>Your friendly 404 generator</span></h1>
+  <!---->
+</section>
+`;

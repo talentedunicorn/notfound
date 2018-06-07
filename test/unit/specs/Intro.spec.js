@@ -1,5 +1,4 @@
 import {shallowMount} from '@vue/test-utils'
-import {createRenderer} from 'vue-server-renderer'
 import Intro from '@/components/Intro'
 
 describe('Intro.vue', () => {
@@ -16,13 +15,10 @@ describe('Intro.vue', () => {
   })
 
   it('should match snapshot', () => {
-    const renderer = createRenderer()
-    const wrapper = shallowMount(Intro)
-
-    renderer.toString(wrapper.vm, (err, str) => {
-      if(err) throw new Error(err)
-
-      expect(str).toMatchSnapshot()
+    const wrapper = shallowMount(Intro, {
+      stubs: ['router-link']
     })
+
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })

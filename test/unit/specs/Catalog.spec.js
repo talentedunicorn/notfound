@@ -1,5 +1,4 @@
 import {shallowMount} from '@vue/test-utils'
-import {createRenderer} from 'vue-server-renderer'
 import Catalog from '@/components/Catalog'
 
 describe('Catalog.vue', () => {
@@ -12,13 +11,11 @@ describe('Catalog.vue', () => {
   })
 
   it('should match snapshot', () => {
-    const renderer = createRenderer()
-    const wrapper = shallowMount(Catalog)
+    const wrapper = shallowMount(Catalog, {
+      stubs: ['router-link']
+    })
 
-    renderer.toString(wrapper.vm, (err, str) => {
-      if (err) throw new Error(err)
-      expect(str).toMatchSnapshot()
-    }) 
+    expect(wrapper.html()).toMatchSnapshot()
   })
 })
 
