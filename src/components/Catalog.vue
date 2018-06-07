@@ -1,23 +1,29 @@
 <template>
-  <section>
-    <router-link class="button" to="/">Go back</router-link>
-    <h1>Select template</h1>
+  <section class="page">
+    <Header title="Select template" back="/" />
 
     <ul v-if="templates.length > 0">
       <li v-for="(template, index) in templates" :key="index"><router-link to="/template">{{ template.title }}</router-link></li>
     </ul>
 
     <p class="placeholder" v-else>No templates found</p>
+
+    <Form class="form" v-if="create"/>
+
+    <button class="button" @click="toggleCreate">{{ create ? 'cancel': 'create a new template' }}</button>
   </section>
 </template>
 
 <script>
 import axios from 'axios'
+import Form from './Form'
 
 export default {
   name: 'Catalog',
+  components: { Form },
   data() {
     return {
+      create: false,
       templates: []
     }
   },
@@ -28,28 +34,16 @@ export default {
         this.templates = response.data
       })
       .catch((error) => console.log(error))
+  },
+  methods: {
+    toggleCreate() {
+      this.create = !this.create
+    }
   }
 }
 </script>
 
 <style scoped>
-  section {
-    display: grid;
-    grid-template-columns: [col] auto  [col] 1fr;
-    grid-template-rows: [row] min-content [row] auto;
-    grid-gap: var(--spacing);
-  }
-
-  .button {
-    grid-column: col / span 1;
-    grid-row: row / span 1;
-  }
-
-  ul,
-  p {
-    grid-column: col / span 2;
-  }
-
   ul {
     list-style: none;
     margin: 0;
@@ -73,10 +67,7 @@ export default {
     text-decoration: none;
   }
 
-  h1 {
-    grid-column: col 2;
-    text-transform: uppercase;
-    letter-spacing: var(--letter-spacing);
-    font-size: var(--size-2);
+  button {
+    margin: var(--spacing) 0;
   }
 </style>

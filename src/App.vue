@@ -26,6 +26,7 @@ export default {
   --font-family: 'Nunito', sans-serif;
   --bold: 700;
   --normal: 400;
+  --size-small: 0.5rem;
   --size-1: 1rem;
   --size-2: 1.2rem;
   --size-3: 1.44rem;
@@ -66,11 +67,22 @@ export default {
   border-radius: var(--border-radius);
   border: var(--border-size) solid currentColor;
   display: inline-grid;
+  cursor: pointer;
 }
 
 .placeholder {
   font-size: var(--size-5);
   color: var(--gray);
   font-weight: var(--bold);
+}
+
+.placeholder .button {
+  border: none;
+}
+
+.page {
+  display: grid;
+  grid-template-rows: min-content auto;
+  align-content: start;
 }
 </style>
