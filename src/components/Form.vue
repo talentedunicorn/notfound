@@ -1,8 +1,8 @@
 <template>
   <form>
     <label>
-      <span>Name</span>
-      <input v-model.trim="name" type="text"/>
+      <span>Title</span>
+      <input v-model.trim="title" type="text"/>
     </label>
 
     <label>
@@ -15,16 +15,18 @@
 </template>
 
 <script>
+  import axios from 'axios'
+
   export default {
     name: 'Form',
     data() {
       return {
-        name: ''
+        title: ''
       }
     },
     computed: {
       slug() {
-        return this.name
+        return this.title
           .replace(/(\ )/g, '-')
           .replace(/[^a-zA-Z0-9-]/g, '')
           .toLowerCase()
@@ -32,11 +34,15 @@
     },
     methods: {
       handleSubmit() {
-        if (this.name.length > 0 && this.slug.length > 0) {
-          console.log('Saving template', {
-            name: this.name,
+        if (this.title.length > 0 && this.slug.length > 0) {
+          let template = {
+            title: this.title,
             slug: this.slug
-          })
+          }
+
+          axios.post('/api/templates', template)
+            .then(response => console.log(response))
+            .catch(err => console.log(err))
         }
       }
     }
@@ -47,6 +53,7 @@
   form {
     display: grid;
     align-content: start;
+    padding: var(--spacing) 0;
   }
 
   label {
