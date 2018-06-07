@@ -12,31 +12,19 @@
 </template>
 
 <script>
-const templates = [
-  {
-    title: 'Search',
-    slug: 'search'
-  },
-  {
-    title: 'Gif',
-    slug: 'gif'
-  },
-  {
-    title: 'Puzzle',
-    slug: 'puzzle'
-  },
-  {
-    title: 'Suggestions',
-    slug: 'suggestions'
-  }
-]
+import axios from 'axios'
 
 export default {
   name: 'Catalog',
-  data () {
+  data() {
     return {
-      templates
+      templates: []
     }
+  },
+  mounted() {
+    // Get templates
+    axios.get('/api/templates')
+      .then((response) => { this.templates = response.data })
   }
 }
 </script>
@@ -54,8 +42,12 @@ export default {
     grid-row: row / span 1;
   }
 
-  ul {
+  ul,
+  p {
     grid-column: col / span 2;
+  }
+
+  ul {
     list-style: none;
     margin: 0;
     padding: 0;
