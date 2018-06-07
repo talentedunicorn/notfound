@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Intro from '@/components/Intro'
-import Catalog from '@/components/Catalog'
-import Template from '@/components/Template'
+import Intro from '../components/Intro'
+import Catalog from '../components/Catalog'
+import Template from '../components/Template'
 
 Vue.use(Router)
 
