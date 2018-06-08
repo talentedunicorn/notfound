@@ -10,13 +10,11 @@
       <input v-model="slug" disabled="true" type="text"/>
     </label>
 
-    <button class="button" @click.prevent="handleSubmit">Save</button>
+    <button class="button" :disabled="title.length === 0" @click.prevent="handleSubmit">Save</button>
   </form>
 </template>
 
 <script>
-  import axios from 'axios'
-
   export default {
     name: 'Form',
     data() {
@@ -40,10 +38,13 @@
             slug: this.slug
           }
 
-          axios.post('/api/templates', template)
-            .then(response => console.log(response))
-            .catch(err => console.log(err))
+          this.$store.dispatch('createTemplate', template)
+
+          this.clearForm()
         }
+      },
+      clearForm() {
+        this.title = ''
       }
     }
   }

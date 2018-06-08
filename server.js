@@ -51,7 +51,7 @@ app.post('/api/templates', (req, res) => {
 
   template.save()
     .then(result => {
-      res.status(200).json({ message: 'Successfully created', data: result })
+      res.status(200).json(result)
     })
     .catch(err => console.log(err))
 });
@@ -61,7 +61,7 @@ app.delete('/api/templates/:id', (req, res) => {
   Template.remove({_id: id})
     .then(result => {
       if (result.n === 1) {
-        res.status(200).json({ message: 'Successfully deleted', data: result })
+        res.status(200).json(result)
       } else {
         res.status(500).json({ message: 'The was no record to delete' })
       }
