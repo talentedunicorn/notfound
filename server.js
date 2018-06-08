@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const history = require('connect-history-api-fallback')
 const mongoose = require('mongoose')
@@ -6,8 +8,8 @@ const path = require('path')
 const Template = require('./src/models/template')
 
 const app = express()
-const PORT = 3000
-const DB_SERVER = 'mongodb://localhost/notfound'
+const PORT = process.env.PORT
+const DB_SERVER = process.env.DB_SERVER
 
 const logger = function(req, res, next) {
   // Log requests
