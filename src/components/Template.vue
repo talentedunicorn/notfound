@@ -18,16 +18,13 @@ export default {
   },
   computed: {
     template() {
-      return this.$store.state.currentTemplate
+      return this.$store.state.templates.filter(template => template._id === this.id)[0]
     }
-  },
-  mounted() {
-    this.$store.commit('getTemplate', this.id)
   },
   methods: {
     deleteTemplate(id) {
-      console.log('Delete item -', id)
-      // this.$store.dispatch('deleteTemplate', id)
+      this.$store.dispatch('deleteTemplate', id)
+      this.$router.replace({ name: 'catalog' }) // Navigate back to catalog
     }
   }
 }

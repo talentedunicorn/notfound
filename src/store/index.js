@@ -7,13 +7,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     notification: {},
-    currentTemplate: {},
     templates: []
   },
   mutations: {
-    getTemplate(state, id) {
-      state.currentTemplate = state.templates.filter(template => template._id == id)[0]
-    },
     setTemplates(state, templates) {
       state.templates = templates
     },
@@ -42,6 +38,18 @@ export default new Vuex.Store({
           commit('setNotification', { title: 'The template was created successfully', type: 'success' })
         })
         .catch(err => console.log(err))
+    },
+    deleteTemplate ({ commit, state }, id) {
+      axios.delete('/api/templates/'+ id)
+        .then((response) => {
+          let template = state.templates.filter(template => template._id === id)[0]
+          commit('setNotification', { title: 'Template deleted successfully', type: 'success' })
+          state.templates.splice(state.templates.indexOf(template), 1)
+        })
+        .catch(err => {
+          commit('setNotification', { title: 'There was an error deleting the template', type: 'error'})
+          console.error(err)
+        })
     }
   }
 })
