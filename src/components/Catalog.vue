@@ -46,7 +46,7 @@ export default {
 <style scoped>
   ul {
     list-style: none;
-    margin: 0;
+    margin: var(--spacing) 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
