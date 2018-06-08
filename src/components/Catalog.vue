@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Form from './Form'
 
 export default {
@@ -23,17 +22,16 @@ export default {
   components: { Form },
   data() {
     return {
-      create: false,
-      templates: []
+      create: false
     }
   },
   mounted() {
-    // Get templates
-    axios.get('/api/templates')
-      .then((response) => {
-        this.templates = response.data
-      })
-      .catch((error) => console.log(error))
+    this.$store.dispatch('fetchTemplates')
+  },
+  computed: {
+    templates() {
+      return this.$store.state.templates
+    }
   },
   methods: {
     toggleCreate() {
