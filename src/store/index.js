@@ -6,9 +6,13 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    currentTemplate: {},
     templates: []
   },
   mutations: {
+    getTemplate(state, id) {
+      state.currentTemplate = state.templates.filter(template => template._id == id)[0]
+    },
     setTemplates(state, templates) {
       state.templates = templates
     },

@@ -20,9 +20,10 @@ export default new Router({
       component: Catalog
     },
     {
-      path: '/template',
+      path: '/template/:id',
       name: 'template',
-      component: Template
+      component: Template,
+      props: true
     }
   ]
 })
