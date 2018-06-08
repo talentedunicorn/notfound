@@ -1,12 +1,23 @@
 <template>
   <div id="app">
+    <Notification v-if="notification.title" :title="notification.title" :type="notification.type"/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Notification from './components/Notification'
 export default {
-  name: 'App'
+  name: 'App',
+  components: { Notification },
+  computed: {
+    notification() {
+      return this.$store.state.notification
+    }
+  },
+  mounted() {
+    this.$store.dispatch('fetchTemplates')
+  },
 }
 </script>
 
@@ -19,6 +30,7 @@ export default {
   --white: #fff;
   --gray: #ced4da;
   --red: #fa5252;
+  --green: #40c057;
   --letter-spacing: 0.125em;
   --spacing: 1.25rem;
   --border-radius: 5px;
@@ -40,6 +52,7 @@ export default {
   background: var(--white);
   min-height: 100vh;
   display: grid;
+  align-content: start;
 }
 
 #app > * {

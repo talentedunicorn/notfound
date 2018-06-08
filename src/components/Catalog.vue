@@ -25,9 +25,6 @@ export default {
       create: false
     }
   },
-  mounted() {
-    this.$store.dispatch('fetchTemplates')
-  },
   computed: {
     templates() {
       return this.$store.state.templates

@@ -6,6 +6,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    notification: {},
     currentTemplate: {},
     templates: []
   },
@@ -18,6 +19,12 @@ export default new Vuex.Store({
     },
     appendTemplate(state, template) {
       state.templates.push(template)
+    },
+    setNotification(state, notification) {
+      state.notification = notification
+    },
+    clearNotification(state) {
+      state.notification = {}
     }
   },
   actions: {
@@ -30,7 +37,10 @@ export default new Vuex.Store({
     },
     createTemplate ({ commit, state }, template) {
       axios.post('/api/templates', template)
-        .then(response => commit('appendTemplate', response.data))
+        .then(response => { 
+          commit('appendTemplate', response.data)
+          commit('setNotification', { title: 'The template was created successfully', type: 'success' })
+        })
         .catch(err => console.log(err))
     }
   }

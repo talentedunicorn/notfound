@@ -1,6 +1,9 @@
 <template>
-  <div>
+  <div class="page">
     <Header :title="template.title" back="/catalog" />
+    <p>This template is not ready to use</p>
+
+    <button class="button" @click="deleteTemplate(template._id)">Delete</button>
   </div>
 </template>
 
@@ -20,6 +23,12 @@ export default {
   },
   mounted() {
     this.$store.commit('getTemplate', this.id)
+  },
+  methods: {
+    deleteTemplate(id) {
+      console.log('Delete item -', id)
+      // this.$store.dispatch('deleteTemplate', id)
+    }
   }
 }
 </script>

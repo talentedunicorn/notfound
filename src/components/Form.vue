@@ -15,6 +15,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   export default {
     name: 'Form',
     data() {
@@ -31,6 +32,9 @@
       }
     },
     methods: {
+      ...mapActions([
+        'createTemplate'
+      ]),
       handleSubmit() {
         if (this.title.length > 0 && this.slug.length > 0) {
           let template = {
@@ -38,8 +42,7 @@
             slug: this.slug
           }
 
-          this.$store.dispatch('createTemplate', template)
-
+          this.createTemplate(template)
           this.clearForm()
         }
       },
