@@ -5,7 +5,7 @@
   "author": "Ezekiel Mangalu <emangalu@jirnexu.com>",
   "private": true,
   "scripts": {
-    "dev": "parcel watch index.html | nodemon server.js",
+    "dev": "concurrently 'parcel watch index.html' 'nodemon server.js'",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
@@ -29,6 +29,7 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-plugin-transform-vue-jsx": "^3.7.0",
     "babel-preset-stage-2": "^6.24.1",
+    "concurrently": "^3.5.1",
     "connect-history-api-fallback": "^1.5.0",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
