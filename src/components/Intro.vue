@@ -1,7 +1,6 @@
 <template>
   <section>
     <h1><span>{{ title }}</span>&#32;<span>{{ subtitle }}</span></h1>
-
     <router-link class="button" to="/catalog">{{ buttonLabel }}</router-link>
   </section>
 </template>

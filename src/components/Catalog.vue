@@ -1,7 +1,6 @@
 <template>
   <section class="page">
     <Header title="Select template" back="/" />
-
     <Form class="form" v-if="create"/>
     <button class="button" @click="toggleCreate">{{ create ? 'cancel': 'create a new template' }}</button>
 
